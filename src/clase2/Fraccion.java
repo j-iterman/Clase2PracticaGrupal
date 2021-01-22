@@ -25,6 +25,10 @@ public class Fraccion {
         this.denominador = denominador;
     }
 
+    public Fraccion convertirAFraccion(int entero){
+        return new Fraccion(entero, 1);
+    }
+
     public Fraccion multiplicar(Fraccion otraFraccion){
         Fraccion nuevaFraccion = new Fraccion(getNumerador(), getDenominador());
 
@@ -34,6 +38,12 @@ public class Fraccion {
         return nuevaFraccion;
     }
 
+    public Fraccion multiplicar(int entero){
+        Fraccion otraFraccion = convertirAFraccion(entero);
+
+        return multiplicar(otraFraccion);
+    }
+
     public Fraccion dividir(Fraccion otraFraccion){
         Fraccion nuevaFraccion = new Fraccion(getNumerador(), getDenominador());
 
@@ -41,6 +51,12 @@ public class Fraccion {
         nuevaFraccion.setDenominador(this.denominador * otraFraccion.getNumerador());
 
         return nuevaFraccion;
+    }
+
+    public Fraccion dividir(int entero){
+        Fraccion otraFraccion = convertirAFraccion(entero);
+
+        return dividir(otraFraccion);
     }
 
     public Fraccion sumar(Fraccion otraFraccion){
@@ -55,6 +71,12 @@ public class Fraccion {
         return nuevaFraccion;
     }
 
+    public Fraccion sumar(int entero){
+        Fraccion otraFraccion = convertirAFraccion(entero);
+
+        return sumar(otraFraccion);
+    }
+
     public Fraccion restar(Fraccion otraFraccion){
         Fraccion nuevaFraccion = new Fraccion(getNumerador(), getDenominador());
 
@@ -67,11 +89,14 @@ public class Fraccion {
         return nuevaFraccion;
     }
 
+    public Fraccion restar(int entero){
+        Fraccion otraFraccion = convertirAFraccion(entero);
+
+        return restar(otraFraccion);
+    }
+
     @Override
     public String toString() {
-        return "Fraccion{" +
-                "numerador=" + numerador +
-                ", denominador=" + denominador +
-                '}';
+        return numerador + "/" + denominador;
     }
 }
